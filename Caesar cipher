@@ -1,0 +1,26 @@
+import sys  # import library for arguments
+
+
+def main(argv):
+    if len(sys.argv) != 2:
+        print("Usage: {}".format(argv[0]))  # check for argument
+        exit(1)
+    key = int(sys.argv[1])
+    key = key % 26
+    if key < 0:
+        print("Error")
+    s = input("plaintext: ")  # get word from the user
+    print("ciphertext: ", end="")  # print cyphered word
+    n = len(s)
+    for i in range(n):
+        if s[i].isupper():  # rule for uppercase letter
+            print("{}".format(chr(((ord(s[i]) + key) % 65) % 26 + 65)), end="")
+        elif s[i].islower():  # rule for lowercase letter
+            print("{}".format(chr(((ord(s[i]) + key) % 96) % 26 + 96)), end="")
+        else:  # rule for other symbols
+            print("{}".format(s[i]), end="")
+    print()
+
+
+if __name__ == "__main__":
+    main(sys.argv)
