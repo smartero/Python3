@@ -1,0 +1,31 @@
+""" An anagram is a word or phrase formed by rearranging the letters of a different word or phrase. For example, "Sool" is an anagram for "Solo". A palindrome is a word or phrase which reads the same backward as forward, such as "madam". An anadrome is a word or phrase if any of its anagrams form a palindrome. 
+For example: 
+Input: "SoloSolo" 
+Output: yes ("SoollooS" is an anagram of "SoloSolo" which also is a palindrome). 
+Input: "3haha" 
+Output: yes ("ha3ah" is an anagram of "3haha" which also is a palindrome). 
+Input: "Solo" 
+Output: no 
+Write a program to check if the user input is an anadrome or not."""
+
+while True:
+    print("Please input word to check: ", end='')
+    word = input()
+    if word.isalpha():
+        break
+
+result = {}
+for w in word:
+    if w not in result:
+        result[w] = 1
+    else:
+        result[w] += 1
+n = 0
+for key, value in result.items():
+    if value % 2 != 0:
+        n += 1
+    
+if n <= 1:
+    print("Yes")
+else:
+    print("No")
