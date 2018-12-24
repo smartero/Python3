@@ -1,0 +1,25 @@
+''' Programm takes an inputfrom the user - any text.
+Checks which letter is used more often (has max index). If two letters have the same
+index, more senior letter is printed.
+'''
+
+print('Please type your text: ', end = '')
+string_new = input()
+string_new = string_new.lower()
+string_new=string_new.replace(" ", "")
+data = {}
+string = ""
+for c in string_new:
+    if c.isalpha():
+        string += c
+for string in string:
+    if string in data:
+        data[string] += 1
+    else:
+        data.update({string:1})
+maxim = max(list(data.values()))
+result = []
+for i, j in data.items():
+    if j == maxim:
+        result.append(i)
+print(max(result))
